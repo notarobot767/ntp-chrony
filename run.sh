@@ -3,21 +3,7 @@
 cd "${0%/*}"
 #change directory relative to script
 
-source ../config.sh
-
-########################################
-NAME="chrony"
-#name of container
-
-HNAME="ntp-a.ogrydziak.net"
-#hostname of container
-
-NETWORK="SERVERS"
-#docker network to use
-
-IP="10.0.20.105"
-#ip of container
-########################################
+source ./config.sh
 
 podman stop $NAME
 podman rm $NAME
@@ -34,6 +20,6 @@ podman run -d \
   -e TZ=$TZ \
   -e PUID=$PUID \
   -e PGID=$PGID \
-  -v ./config:/etc/chrony:ro \
+  -v $LOCAL_CONFIG:/etc/chrony:ro \
   -v $LOGDIR:/var/log/chrony \
   localhost/chrony:latest
