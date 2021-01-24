@@ -1,37 +1,16 @@
 #!/bin/bash
 
-NAME="chrony"
+IMAGE="ntp-chrony:latest"
+#image to use
+
+RESTART_MODE="always"
+#docker restart mode
+
+NAME="ntp-a"
 #name of container
+
+H_PORT="123"
+C_PORT="123"
 
 HNAME="ntp-a.ogrydziak.net"
 #hostname of container
-
-NETWORK="SERVERS"
-#docker network to use
-
-IP="10.0.20.105"
-#ip of container
-
-LOGDIR="/disk2/logs/chrony"
-#local dir for logs
-
-LOCAL_CONFIG="./config"
-#app config dir
-
-DNS="10.0.20.100"
-#local dns server for network
-
-DNS_SEARCH="ogrydziak.net"
-#local dns domain search
-
-RESTART_MODE="on-failure"
-#docker restart mode
-
-TZ="America/New_York"
-#docker time zone
-
-PUID="1000"
-#docker UID
-
-PGID="1000"
-#docker GID
