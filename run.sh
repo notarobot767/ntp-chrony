@@ -5,16 +5,15 @@ cd "${0%/*}"
 
 source ../config.sh
 source ./config.sh
+#source global then local parameters
 
-docker stop $NAME
-docker rm $NAME
+podman stop $NAME
+podman rm $NAME
 #stop and remove an existing instance
 
-docker run -d \
+podman run -d \
   --name $NAME \
-  -h=$HNAME \
+  --restart $RESTART_MODE \
   --network=$NETWORK \
   -p $H_PORT:$C_PORT/udp \
-  --dns-search=$DNS_SEARCH \
-  --restart $RESTART_MODE \
   $IMAGE
