@@ -11,7 +11,7 @@ podman stop $NAME
 podman rm $NAME
 #stop and remove an existing instance
 
-podman run -it \
+podman run -d \
   --name $NAME \
   --restart $RESTART_MODE \
   --network=$NETWORK \
