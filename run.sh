@@ -7,13 +7,25 @@ source ../config.sh
 source ./config/config.conf
 #source global then local parameters
 
-podman stop $NAME
-podman rm $NAME
-#stop and remove an existing instance
+docker stop $NAME
+docker rm $NAME
+#if exist, stop and remove container
 
-podman run -d \
+docker run -d \
   --name $NAME \
-  --restart $RESTART_MODE \
+  -h $HOST \
   --network=$NETWORK \
-  -p $H_PORT:$C_PORT/udp \
+  -m $MEM_LIMIT \
+  -p $BINDING_IP:$H_PORT:$C_PORT/udp \
+  --cap-add=$SYS_TIME \
+  --restart $RESTART_MODE \
+  -e TZ=$TZ \
   $IMAGE
+
+#--cap-add: necessary for controlling system of host
+  #SYS_TIME
+  #https://docs.docker.com/engine/reference/run/
+
+#-p: necessary to state binding IP instead of listen on all interfaces due
+  #to docker inherit container dns listening on 127.0.0.53:53
+  #Will otherwise run into conflict with dnsmasq
