@@ -6,7 +6,7 @@ cd "${0%/*}"
 source ./config/config.conf
 docker build \
 	--file "./config/dockerfile.conf" \
-	--tag $IMAGE_NAME \
+	--tag $IMAGE \
 	--pull \
 	.
 
