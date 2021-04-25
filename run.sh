@@ -17,6 +17,7 @@ docker run -d \
   --network=$NETWORK \
   -m $MEM_LIMIT \
   -p $BINDING_IP:$H_PORT:$C_PORT/udp \
+  -p $BINDING_IPV6:$H_PORT:$C_PORT/udp \
   --cap-add=$SYS_TIME \
   --restart $RESTART_MODE \
   -e TZ=$TZ \
