@@ -18,11 +18,11 @@ ENV TZ=America/New_York
 RUN export DEBIAN_FRONTEND=noninteractive && \
   ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone && \
   apt-get update -y && apt-get upgrade -y && apt-get install -y tzdata && \
-  dpkg-reconfigure --frontend noninteractive tzdata && \
-  #update, upgrade, set timezone
-  \
-  apt-get install -y chrony
-  #install chrony package
+  dpkg-reconfigure --frontend noninteractive tzdata
+#update, upgrade, set timezone
+
+RUN apt-get update -y && apt-get install -y chrony
+#install chrony package
 
 COPY ./app /app
 #config will live locally on image

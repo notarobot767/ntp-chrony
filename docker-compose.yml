@@ -1,0 +1,28 @@
+version: "3.9"
+services:
+  ntp-a:
+    container_name: ntp-a
+    hostname: ntp-a
+    build:
+      context: .
+    ports:
+      - $SRV_1:123:123/udp
+    cap_add:
+      - SYS_TIME
+    deploy:
+      resources:
+        limits:
+          memory: 256m
+  ntp-b:
+    container_name: ntp-b
+    hostname: ntp-b
+    build:
+      context: .
+    ports:
+      - $SRV_2:123:123/udp
+    cap_add:
+      - SYS_TIME
+    deploy:
+      resources:
+        limits:
+          memory: 256m
