@@ -1,15 +1,12 @@
-#!/bin/bash
-
 FROM docker.io/library/ubuntu:latest
 
 LABEL maintainer="notarobot" \
-  org.label-schema.name="Chrony NTP Server" \
-  org.label-schema.name="OG Networks" \
-  org.label-schema.build-date="2021-02-13" \
-  org.label-schema.description="Custom NTP server using Chrony on Alpine Linux" \
-  org.label-schema.url="https://github.com/notarobot767/ntp-chrony" \
-  org.label-schema.vcs-ref="github.com:notarobot767/ntp-chrony.git" \
-  org.label-schema.cmd="docker run -d -p 123:123/udp --cap-add='SYS_TIME'  chrony"
+  org.label-schema.name="FreeRadius Server" \
+  org.label-schema.vendor="OG Networks" \
+  org.label-schema.build-date="2021-06-26" \
+  org.label-schema.description="Chrony NTP server on Ubuntu" \
+  org.label-schema.url="https://www.ogrydziak.net" \
+  org.label-schema.vcs-ref="https://github.com/notarobot767/ntp-chrony"
 
 ENV TZ=America/New_York
 #set timezone variable
