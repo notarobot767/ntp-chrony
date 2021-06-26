@@ -7,6 +7,9 @@ source ../config.sh
 source ./config/config.conf
 #source global then local parameters
 
+NAME=$NTP_A_NAME
+HOST=$NTP_A_HOST
+
 docker stop $NAME
 docker rm $NAME
 #if exist, stop and remove container
